@@ -1,4 +1,4 @@
-package com.dallex.datingapp;
+package com.dallex.datingapp.Cards;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
+import com.dallex.datingapp.R;
 
 import java.util.List;
 

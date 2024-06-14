@@ -1,4 +1,4 @@
-package com.dallex.datingapp;
+package com.dallex.datingapp.Cards;
 
 public class cards {
     private String userId;
