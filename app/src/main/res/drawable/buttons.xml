@@ -1,0 +1,12 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:top="2dp" android:left="2dp">
+        <shape>
+            <gradient
+                android:angle="45"
+                android:startColor="#FBD58E"
+                android:endColor="@color/rose"
+                android:type="linear" />
+            <corners android:radius="50dp" />
+        </shape>
+    </item>
+</layer-list>

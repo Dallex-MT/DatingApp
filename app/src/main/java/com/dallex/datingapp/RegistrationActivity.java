@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -96,6 +97,17 @@ public class RegistrationActivity extends AppCompatActivity {
                 });
             }
         });
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(RegistrationActivity.this, ChooseLoginOrRegistrationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        };
+
+        this.getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     @Override

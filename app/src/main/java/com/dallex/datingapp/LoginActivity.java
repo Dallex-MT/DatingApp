@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -60,12 +61,22 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Error al ingresar", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
         });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(LoginActivity.this, ChooseLoginOrRegistrationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        };
+
+        this.getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     @Override
