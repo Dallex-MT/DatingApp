@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity"
+    tools:context=".AccountActivity"
     android:background="@drawable/chat_color_blur"
     android:orientation="vertical">
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:paddingHorizontal="20sp"
-        android:paddingTop="100dp">
+        android:paddingTop="75dp">
 
         <ImageView
             android:id="@+id/profileImage"
@@ -23,18 +23,25 @@
             android:layout_gravity="center"
             android:layout_marginBottom="20sp"
             android:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:id="@+id/name"
+            android:background="@null"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="20dp"
+            android:textColorHint="@color/white"
+            android:hint="@string/name"
+            android:layout_marginBottom="20sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phone"
+            android:background="@null"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="@string/phone"
             android:layout_marginBottom="20sp"
-            android:text="@string/name" />
-
+            android:inputType="phone"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,17 +50,19 @@
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
+                android:id="@+id/backSettings"
                 android:background="@drawable/buttons"
                 android:layout_marginRight="75dp"
-                android:src="@drawable/logout"
+                android:src="@drawable/back"
                 android:scaleType="centerInside"
                 android:padding="10dp"
-                android:onClick="logoutUser"/>
+                android:onClick="goToSettings"/>
             <ImageButton
                 android:layout_width="75dp"
                 android:layout_height="75dp"
+                android:id="@+id/saveChanges"
                 android:background="@drawable/buttons"
-                android:src="@drawable/profile"
+                android:src="@drawable/save"
                 android:padding="10dp"
                 android:scaleType="centerInside"
                 android:onClick="goToAccount"/>
@@ -75,7 +84,8 @@
             android:src="@drawable/account"
             android:scaleType="centerInside"
             android:layout_gravity="bottom"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:onClick="goToSettings" />
 
         <ImageButton
             android:layout_width="0dp"

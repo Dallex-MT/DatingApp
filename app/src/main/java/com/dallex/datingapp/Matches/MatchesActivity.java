@@ -1,6 +1,9 @@
 package com.dallex.datingapp.Matches;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +13,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dallex.datingapp.ChooseLoginOrRegistrationActivity;
+import com.dallex.datingapp.MainActivity;
 import com.dallex.datingapp.R;
+import com.dallex.datingapp.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +30,7 @@ import java.util.List;
 public class MatchesActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mMatchesAdapter;
+    private TextView id;
     private RecyclerView.LayoutManager mMatchesLayoutManager;
 
     private String currentUserID;
@@ -100,6 +107,18 @@ public class MatchesActivity extends AppCompatActivity {
     private ArrayList<MatchesObject> resultsMatches = new ArrayList<MatchesObject>();
     private List<MatchesObject> getDataSetMatches() {
         return resultsMatches;
+    }
+
+    public void goToSettings(View view) {
+        Intent intent = new Intent(MatchesActivity.this, SettingsActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToFeed(View view) {
+        Intent intent = new Intent(MatchesActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

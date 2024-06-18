@@ -42,7 +42,7 @@
                 android:layout_marginBottom="10dp"
                 android:buttonTint="@color/skyBlue"
                 android:foregroundTint="@color/skyBlue"
-                android:text="Male"
+                android:text="Hombre"
                 android:textColor="@color/skyBlue"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -53,7 +53,7 @@
                 android:layout_marginBottom="10dp"
                 android:buttonTint="@color/rose"
                 android:foregroundTint="@color/rose"
-                android:text="Female"
+                android:text="Mujer"
                 android:textColor="@color/rose"
                 android:textSize="18dp"
                 android:textStyle="bold" />

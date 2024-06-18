@@ -2,6 +2,7 @@ package com.dallex.datingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView listView;
     List<cards> rowItems;
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,15 @@ public class MainActivity extends AppCompatActivity {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
                 usersDb.child(userId).child("connections").child("nope").child(currentUId).setValue(true);
-                Toast.makeText(MainActivity.this, "Left", Toast.LENGTH_SHORT).show();
+                toast=Toast.makeText(MainActivity.this, "Dislike", Toast.LENGTH_SHORT);
+                toast.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast.cancel();
+                    }
+                }, 500);
             }
 
             @Override
@@ -83,7 +93,15 @@ public class MainActivity extends AppCompatActivity {
                 String userId = obj.getUserId();
                 usersDb.child(userId).child("connections").child("yeps").child(currentUId).setValue(true);
                 isConnectionMatch(userId);
-                Toast.makeText(MainActivity.this, "Right", Toast.LENGTH_SHORT).show();
+                toast=Toast.makeText(MainActivity.this, "Like", Toast.LENGTH_SHORT);
+                toast.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast.cancel();
+                    }
+                }, 500);
             }
 
             @Override
@@ -95,15 +113,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        // Optionally add an OnItemClickListener
-        flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClicked(int itemPosition, Object dataObject) {
-                Toast.makeText(MainActivity.this, "Item Clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 
     private void isConnectionMatch(String userId) {
@@ -112,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    Toast.makeText(MainActivity.this, "new Connection", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Hiciste un Match", Toast.LENGTH_LONG).show();
                     String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
 
                     usersDb.child(dataSnapshot.getKey()).child("connections").child("matches").child(currentUId).child("ChatId").setValue(key);
@@ -138,11 +147,11 @@ public class MainActivity extends AppCompatActivity {
                     if (dataSnapshot.child("sex").getValue() != null){
                         userSex = dataSnapshot.child("sex").getValue().toString();
                         switch (userSex){
-                            case "Male":
-                                oppositeUserSex = "Female";
+                            case "Hombre":
+                                oppositeUserSex = "Mujer";
                                 break;
-                            case "Female":
-                                oppositeUserSex = "Male";
+                            case "Mujer":
+                                oppositeUserSex = "Hombre";
                                 break;
                         }
                         getOppositeSexUsers();
@@ -188,24 +197,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    public void logoutUser(View view) {
-        mAuth.signOut();
-        Intent intent = new Intent(MainActivity.this, ChooseLoginOrRegistrationActivity.class);
-        startActivity(intent);
-        finish();
-        return;
-    }
-
     public void goToSettings(View view) {
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
-        return;
+        finish();
     }
 
     public void goToMatches(View view) {
         Intent intent = new Intent(MainActivity.this, MatchesActivity.class);
         startActivity(intent);
-        return;
+        finish();
+    }
+
+    public void goToFeed(View view) {
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

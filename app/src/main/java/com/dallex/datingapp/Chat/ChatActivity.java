@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,9 +35,11 @@ public class ChatActivity extends AppCompatActivity {
 
     private EditText mSendEditText;
 
-    private Button mSendButton;
+    private ImageButton mSendButton;
 
     private String currentUserID, matchId, chatId;
+
+
 
     DatabaseReference mDatabaseUser, mDatabaseChat;
     @Override
@@ -146,7 +149,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private ArrayList<ChatObject> resultsChat = new ArrayList<ChatObject>();
     private List<ChatObject> getDataSetChat() {

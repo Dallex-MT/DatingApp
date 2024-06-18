@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/chat_color_blur"
     tools:context=".Chat.ChatActivity">
     <androidx.core.widget.NestedScrollView
         android:layout_above="@+id/sendLayout"
@@ -23,18 +24,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
+
         <EditText
             android:id="@+id/message"
-            android:layout_weight="0.8"
-            android:layout_width="0dp"
+            android:layout_width="22dp"
             android:layout_height="wrap_content"
-            android:hint="message..."
-            />
-        <Button
+            android:layout_weight="0.8"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="Mensaje..." />
+        <ImageButton
             android:layout_weight="0.2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Send"
+            android:layout_height="40dp"
+            android:background="@drawable/buttons"
+            android:backgroundTint="@color/red"
+            android:src="@drawable/chat"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"
+            android:padding="5dp"
             android:id="@+id/send"/>
     </LinearLayout>
 </RelativeLayout>

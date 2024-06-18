@@ -4,29 +4,37 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:padding="20sp">
+
     <ImageView
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/MatchImage"/>
+        android:id="@+id/MatchImage"
+        android:layout_width="75sp"
+        android:layout_height="75sp"
+        android:src="@mipmap/ic_launcher" />
+
     <LinearLayout
-        android:paddingLeft="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical"
-        android:layout_gravity="center">
+        android:paddingLeft="20sp">
+
         <TextView
+            android:id="@+id/MatchName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingBottom="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="Match's Name"
-            android:id="@+id/MatchName"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
         <TextView
+            android:id="@+id/Matchid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Match's ID"
             android:layout_gravity="center"
-            android:id="@+id/Matchid"/>
+            android:text="Match's ID"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
     </LinearLayout>
 
 </LinearLayout>
